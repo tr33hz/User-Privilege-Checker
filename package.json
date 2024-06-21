@@ -1,0 +1,20 @@
+{
+  "name": "privilege-checker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@stdlib/napi": "^0.2.1",
+    "express": "^4.19.2",
+    "node-addon-api": "^3.2.1",
+    "open": "^7.4.2"
+  },
+  "scripts": {
+    "start": "node-gyp configure build && node index.js",
+    "install": "node-gyp rebuild"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "gypfile": true,
+  "description": ""
+}

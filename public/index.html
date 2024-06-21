@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check User Privilege</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Check User Privilege</h1>
+  <form id="checkForm" action="/check-privilege" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <button type="submit">Check</button>
+  </form>
+  <div id="result"></div>
+  <script>
+    document.getElementById('checkForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      
+      fetch('/check-privilege', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: `username=${encodeURIComponent(username)}`,
+      })
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('result').innerHTML = data;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
+</html>
